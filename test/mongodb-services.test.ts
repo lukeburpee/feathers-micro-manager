@@ -30,7 +30,7 @@ describe('feathers-service-manager:mongodb-services', () => {
 	rawRoleService,
 	rawSessionService
 	const app = feathers()
-	const dbUrl = containerized ? 'mongodb://mongodb:27017' : 'mongodb://127.0.0.1:27017'
+	const dbUrl = 'mongodb://127.0.0.1:27017'
 	const noClientOptions = {
 		events: ['testing']
 	}
