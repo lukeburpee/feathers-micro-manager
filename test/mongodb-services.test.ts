@@ -48,13 +48,11 @@ describe('feathers-service-manager:mongodb-services', () => {
 			client = mongo
 			db = mongo.db('test')
 			serviceOptions = {
-				id: '_id',
 				connectionId: uuid(),
 				client: mongo,
 				events: ['testing']
 			}
 			serviceOptionsConnectionId = {
-				id: '_id',
 				client: serviceOptions.connectionId
 			}
 			rawBaseService = new Service(serviceOptions)
