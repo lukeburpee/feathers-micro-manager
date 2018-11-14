@@ -6,6 +6,7 @@ import { base } from 'feathers-service-tests';
 import { MongoClient, ObjectId } from 'mongodb'
 import { _ } from '@feathersjs/commons';
 import { v4 as uuid } from 'uuid'
+import containerized from 'containerized'
 
 import MongoDBBaseService, { Service } from '../src/mongodb/mongodb-base-service'
 import MongoDBDatabaseService, { Service as DatabaseService } from '../src/mongodb/mongodb-database-service'
@@ -29,7 +30,7 @@ describe('feathers-service-manager:mongodb-services', () => {
 	rawRoleService,
 	rawSessionService
 	const app = feathers()
-	const dbUrl = 'mongodb://127.0.0.1:27017/test'
+	const dbUrl = containerized ? 'mongodb://mongodb:27017' : 'mongodb://127.0.0.1:27017'
 	const noClientOptions = {
 		events: ['testing']
 	}
