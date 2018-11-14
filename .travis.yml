@@ -3,6 +3,10 @@ node_js:
   - 'node'
   - '8'
   - '6'
+services:
+  - mongodb
 notifications:
   email: false
+before_script:
+  - sleep 15
 after_success: yarn coverage
