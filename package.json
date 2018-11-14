@@ -1,0 +1,94 @@
+{
+  "name": "feathers-service-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/",
+  "engines": {
+    "node": ">= 4.6.0"
+  },
+  "scripts": {
+    "tslint": "tslint -p tsconfig.json -c tslint.json",
+    "prepublish": "yarn build",
+    "publish": "git push origin --tags && npm run changelog && git push origin",
+    "changelog": "github_changelog_generator && git add CHANGELOG.md && git commit -am \"Updating changelog\"",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish",
+    "build": "tsc",
+    "clean": "rimraf node_modules",
+    "clean:mongodb": "rimraf data/db/**",
+    "pretest": "yarn build",
+    "test:start-mongodb": "mongod --dbpath=data/db",
+    "test:base": "nyc ts-mocha test/base-service.test.ts",
+    "test:connection": "nyc ts-mocha test/connection-service.test.ts",
+    "test:docker": "nyc ts-mocha test/docker-services.test.ts",
+    "test:mongodb": "nyc ts-mocha test/mongodb-services.test.ts",
+    "test:mongoose": "nyc ts-mocha test/mongoose-services.test.ts",
+    "test": "nyc ts-mocha test/**/*.ts",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "coverage:local": "nyc report --reporter=html"
+  },
+  "directories": {
+    "lib": "src",
+    "test": "test"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "exclude": [
+      "dist/**",
+      "**/*.d.ts",
+      "coverage/**",
+      "test/**"
+    ],
+    "all": true
+  },
+  "author": {
+    "email": "lukeburpee@gmail.com"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@feathersjs/commons": "^3.0.1",
+    "@feathersjs/errors": "^3.3.4",
+    "@feathersjs/feathers": "^3.2.3",
+    "@types/uuid": "^3.4.4",
+    "assert": "^1.4.1",
+    "containerized": "^1.0.2",
+    "debug": "^4.1.0",
+    "feathers-memory": "^2.2.0",
+    "feathers-reactive": "^0.7.2",
+    "rxjs": "^6.3.3",
+    "sift": "^7.0.1",
+    "uberproto": "^2.0.4",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@feathersjs/configuration": "^2.0.4",
+    "@types/chai": "^4.1.7",
+    "@types/debug": "^0.0.31",
+    "@types/dockerode": "^2.5.8",
+    "@types/feathersjs__configuration": "^1.0.1",
+    "@types/feathersjs__errors": "^3.2.1",
+    "@types/feathersjs__feathers": "^3.0.5",
+    "@types/mocha": "^5.2.5",
+    "@types/mongodb": "^3.1.14",
+    "@types/mongoose": "^5.3.1",
+    "@types/node": "^10.12.5",
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.2",
+    "cross-env": "^5.2.0",
+    "dockerode": "^2.5.7",
+    "feathers-service-tests": "^0.10.2",
+    "mocha": "^5.2.0",
+    "mongodb": "^3.1.9",
+    "mongoose": "^5.3.11",
+    "nyc": "^13.1.0",
+    "rimraf": "^2.6.2",
+    "source-map-support": "^0.5.9",
+    "ts-mocha": "^2.0.0",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.6"
+  }
+}
