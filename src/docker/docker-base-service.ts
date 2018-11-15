@@ -15,7 +15,7 @@ export class Service extends ConnectionService {
 		return 'base-service'
 	}
 	public healthCheck (): any {
-		return new Promise((resolve) => {
+		return new Promise(resolve => {
 			resolve(this.client.ping())
 		})
 	}

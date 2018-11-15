@@ -32,13 +32,33 @@ describe('feathers-service-manager:docker-services', () => {
 	}
 	const app = feathers()
 	describe('Base Service', () => {
-		app.use('/docker', DockerBaseService(serviceOptions))
+		const rawService = new Service(serviceOptions)
+		rawService.setup(app, '/docker-service')
 		describe('Connection Methods', () => {
-			describe('getConnectionType', () => {})
-			describe('getServiceType', () => {})
-			describe('healthCheck', () => {})
-			describe('getInfo', () => {})
-			describe('getInstance', () => {})
+			describe('getConnectionType', () => {
+				it(`returns the 'docker' connection type`, () => {
+					expect(rawService.getConnectionType()).to.equal('docker')
+				})
+			})
+			describe('getServiceType', () => {
+				it(`returns the 'base-service' docker service type`, () => {
+					expect(rawService.getServiceType()).to.equal('base-service')
+				})
+			})
+			describe('healthCheck', () => {
+				it(`returns the results of the docker server health check`, () => {
+					return rawService.healthCheck().then((status: any) => {
+						expect(status).to.equal('OK')
+					})
+				})
+			})
+			describe('getInfo', () => {
+				it(`returns the results of the docker info check`, () => {
+					return rawService.getInfo().then((info: any) => {
+						expect(info).to.have.property('Containers')
+					})
+				})
+			})
 		})
 		//describe('Common Service Tests', () => {
 		//	base(app, errors, 'docker', 'id')
@@ -52,7 +72,9 @@ describe('feathers-service-manager:docker-services', () => {
 				expect(rawSwarmService.getConnectionType()).to.equal('docker')
 			})
 			describe('getServiceType', () => {
-				expect(rawSwarmService.getServiceType()).to.equal('swarm-service')
+				it(`returns the 'swarm-service' docker service type`, () => {
+					expect(rawSwarmService.getServiceType()).to.equal('swarm-service')
+				})
 			})
 		})
 		//describe('Common Service Tests', () => {
@@ -64,7 +86,9 @@ describe('feathers-service-manager:docker-services', () => {
 		rawConfigService.setup(app, '/config-service')
 		describe('Connection Methods', () => {
 			describe('getServiceType', () => {
-				expect(rawConfigService.getServiceType()).to.equal('config-service')
+				it(`returns the 'config-service' docker service type`, () => {
+					expect(rawConfigService.getServiceType()).to.equal('config-service')
+				})
 			})
 		})
 		//describe('Common Service Tests', () => {
@@ -76,7 +100,9 @@ describe('feathers-service-manager:docker-services', () => {
 		rawNetworkService.setup(app, '/network-service')
 		describe('Connection Methods', () => {
 			describe('getServiceType', () => {
-				expect(rawNetworkService.getServiceType()).to.equal('network-service')
+				it(`returns the 'network-service' docker service type`, () => {
+					expect(rawNetworkService.getServiceType()).to.equal('network-service')
+				})
 			})
 		})
 		//describe('Common Service Tests', () => {
@@ -88,7 +114,9 @@ describe('feathers-service-manager:docker-services', () => {
 		rawContainerService.setup(app, '/container-service')
 		describe('Connection Methods', () => {
 			describe('getServiceType', () => {
-				expect(rawContainerService.getServiceType()).to.equal('container-service')
+				it(`returns the 'container-service' docker service type`, () => {
+					expect(rawContainerService.getServiceType()).to.equal('container-service')
+				})
 			})
 		})
 		//describe('Common Service Tests', () => {
@@ -100,7 +128,9 @@ describe('feathers-service-manager:docker-services', () => {
 		rawImageService.setup(app, '/image-service')
 		describe('Connection Methods', () => {
 			describe('getServiceType', () => {
-				expect(rawImageService.getServiceType()).to.equal('image-service')
+				it(`returns the 'image-service' docker service type`, () => {
+					expect(rawImageService.getServiceType()).to.equal('image-service')
+				})
 			})
 		})
 		//describe('Common Service Tests', () => {
@@ -112,7 +142,9 @@ describe('feathers-service-manager:docker-services', () => {
 		rawVolumeService.setup(app, '/volume-service')
 		describe('Connection Methods', () => {
 			describe('getServiceType', () => {
-				expect(rawVolumeService.getServiceType()).to.equal('volume-service')
+				it(`returns the 'volume-service' docker service type`, () => {
+					expect(rawVolumeService.getServiceType()).to.equal('volume-service')
+				})
 			})
 		})
 		//describe('Common Service Tests', () => {
@@ -124,7 +156,9 @@ describe('feathers-service-manager:docker-services', () => {
 		rawTaskService.setup(app, '/task-service')
 		describe('Connection Methods', () => {
 			describe('getServiceType', () => {
-				expect(rawTaskService.getServiceType()).to.equal('task-service')
+				it(`returns the 'task-service' docker service type`, () => {
+					expect(rawTaskService.getServiceType()).to.equal('task-service')
+				})
 			})
 		})
 		//describe('Common Service Tests', () => {
@@ -136,7 +170,9 @@ describe('feathers-service-manager:docker-services', () => {
 		rawSecretService.setup(app, '/secret-service')
 		describe('Connection Methods', () => {
 			describe('getServiceType', () => {
-				expect(rawSecretService.getServiceType()).to.equal('secret-service')
+				it(`returns the 'secret-service' docker service type`, () => {
+					expect(rawSecretService.getServiceType()).to.equal('secret-service')
+				})
 			})
 		})
 		//describe('Common Service Tests', () => {

@@ -10,8 +10,21 @@ export default function (options: ServiceOptions) {
 }
 
 export class Service extends ConnectionService {
+  public default!: any;
+  public admin!: any;
   constructor (options: ServiceOptions) {
     super(options)
+    this.client.then((client: any) => {
+      if (options.defaultDb) {
+        this.default = client.db(options.defaultDb)
+      } else {
+        this.default = client.db('default')
+      }
+      this.admin = this.default.admin()
+      this.healthCheck().then((status: any) => {
+        console.log(`mongodb service status: ${JSON.stringify(status)}`)
+      })
+    })
   }
   public getConnectionType (): string {
     return 'mongodb'
@@ -20,23 +33,25 @@ export class Service extends ConnectionService {
     return 'base-service'
   }
   public healthCheck (): any {
-    return new Promise((resolve) => {
-      resolve(this.client.isConnected())
-    })
-  }
-  public getInfo (): any {
-    return new Promise((resolve) => {
-      resolve('nan')
+    return new Promise(resolve => {
+      this.admin.ping().then((status: any) => {
+        resolve(status)
+      })
     })
   }
   public getInstance (): any {
     return new Promise((resolve) => {
-      resolve('nan')
+      resolve(this.admin)
+    })
+  }
+  public getInfo (): any {
+    return new Promise((resolve) => {
+      resolve(this.admin.serverInfo())
     })
   }
   public close (): any {
     return new Promise((resolve) => {
-      resolve(this.client.close())
+      resolve(this.admin.close())
     })
   }
 }

@@ -10,8 +10,18 @@ export default function (options: ServiceOptions) {
 }
 
 export class Service extends ConnectionService {
+  public default!: any;
+  public admin!: any;
   constructor (options: ServiceOptions) {
     super(options)
+    this.client.then((connection: any) => {
+      const { db } = connection
+      this.default = db
+      this.admin = db.admin()
+      this.healthCheck().then((status: any) => {
+        console.log(`mongoose service status: ${JSON.stringify(status)}`)
+      })
+    })
   }
   public getConnectionType (): string {
     return 'mongoose'
@@ -20,23 +30,20 @@ export class Service extends ConnectionService {
     return 'base-service'
   }
   public healthCheck (): any {
-    return new Promise((resolve) => {
-      resolve('nan')
+    return new Promise(resolve => {
+      this.admin.ping().then((status: any) => {
+        resolve(status)
+      })
     })
   }
   public getInfo (): any {
-    return new Promise((resolve) => {
-      resolve('nan')
-    })
-  }
-  public getInstance (): any {
-    return new Promise((resolve) => {
-      resolve('nan')
+    return new Promise(resolve => {
+      resolve(this.admin.serverInfo())
     })
   }
   public close (): any {
     return new Promise((resolve) => {
-      resolve('nan')
+      resolve(this.admin.close())
     })
   }
 }

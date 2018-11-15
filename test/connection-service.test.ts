@@ -23,11 +23,7 @@ describe('feathers-service-manager:connection-service', () => {
 	serviceOptionsConnectionId = {
 		client: serviceOptions.connectionId
 	}
-	app.use('connections', ConnectionService(serviceOptions))
 
-	const service = app.service('connections')
-	const rawService = new Service(serviceOptions)
-	rawService.setup(app, '/connection-service-test')
 	describe('Initialization', () => {
 		describe('Missing client option', () => {
 			it('throws an error', () => {
@@ -40,6 +36,8 @@ describe('feathers-service-manager:connection-service', () => {
 	//	base(app, errors, 'connections', 'id')
 	//})
 	describe('Custom Methods', () => {
+		const rawService = new Service(serviceOptions)
+		rawService.setup(app, '/connection-service-test')
 		describe('createConnection', () => {
 			const createId = uuid()
 			it('adds a connection to the connection store and returns the original connection data', () => {

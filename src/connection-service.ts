@@ -11,44 +11,30 @@ export class Service extends BaseServiceClass {
 		if (!options.client) {
 			throw new Error(`${this.getConnectionType()} client must be provided`)
 		}
-		if (typeof options.client === 'string') {
-			this.getConnection(options.client).then((connection: any) => {
-				this.connectionId = connection.id
-				this.client = connection.client
-				console.log(`new ${this.getConnectionType()} using connection: ${this.connectionId}`)
-			}).catch((connection: any) => {
-				console.log(`error fetching ${this.getConnectionType()} connection id=${options.client}: ${options.client}`)
-			})
-		} else {
-			this.client = options.client
-			this.createConnection(
-				options.connectionId || this.generateId(),
-				this.client
-			).then((connection: any) => {
-				this.connectionId = connection.id
-				console.log(`${this.getConnectionType()} connection created: ${this.connectionId}`)
-			}).catch((error: any) => {
-				console.log(`${this.getConnectionType()} failed to create connection: ${error.message}`)
-			})
-		}
+		this.client = options.client
+		this.createConnection(
+			options.connectionId || this.generateId(),
+			options.client
+		).then((connection: any) => {
+			this.connectionId = connection.id
+			console.log(`${this.getConnectionType()} connection created: ${this.connectionId}`)
+		}).catch((error: any) => {
+			console.log(`${this.getConnectionType()} failed to create connection: ${error.message}`)
+		})
 	}
 	public createConnection (id: any, client: any): any {
-		return this.healthCheck().then((status: any) => {
-			return this.getInfo().then(((info: any) => {
-				const connection = {
-					id: id,
-					connectionType: this.getConnectionType(),
-					serviceTypes: [this.getServiceType()],
-					client,
-					status: status,
-					info: info
-				}
-				return this.connections.create(connection)
-			})).catch((error: any) => {
-				throw new Error(`${this.getConnectionType()} failed to collection connection info: ${error.message}`)
-			})
-		}).catch((error: any) => {
-			throw new Error(`${this.getConnectionType()} failed connection healthcheck: ${error.message}`)
+		return this.getInfo().then(((info: any) => {
+			const connection = {
+				id: id,
+				connectionType: this.getConnectionType(),
+				serviceTypes: [this.getServiceType()],
+				status: 'pending',
+				client,
+				info: info
+			}
+			return this.connections.create(connection)
+		})).catch((error: any) => {
+			throw new Error(`${this.getConnectionType()} failed to collectect connection info: ${error.message}`)
 		})
 	}
 	public getConnection (connectionId: any): any {
@@ -75,6 +61,8 @@ export class Service extends BaseServiceClass {
 	public healthCheck (): any {
 		return new Promise((resolve) => {
 			resolve('nan')
+		}).then((results: any) => {
+			return results
 		})
 	}
 	public getInfo (): any {
@@ -88,9 +76,11 @@ export class Service extends BaseServiceClass {
 		})
 	}
 	public setup (app: any, path: string): any {
+		if (typeof app.service('connections') === 'undefined') {
+			app.use('connections', BaseService({events: ['testing']}))
+		}
 		this.app = app
 		this.path = path
-		this.app.use('connections', BaseService({id: 'id'}))
 		this.connections = this.app.service('connections')
 	}
 }
