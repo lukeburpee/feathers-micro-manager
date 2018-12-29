@@ -56,7 +56,7 @@
     "assert": "^1.4.1",
     "containerized": "^1.0.2",
     "debug": "^4.1.0",
-    "feathers-memory": "^2.2.0",
+    "feathers-memory": "^3.0.1",
     "feathers-reactive": "^0.7.2",
     "rxjs": "^6.3.3",
     "sift": "^7.0.1",
