@@ -1677,9 +1677,10 @@ sift@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/sift/-/sift-6.0.0.tgz#f93a778e5cbf05a5024ebc391e6b32511a6d1f82"
 
-sift@^7.0.1:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/sift/-/sift-7.0.1.tgz#47d62c50b159d316f1372f8b53f9c10cd21a4b08"
+sift@^8.3.3:
+  version "8.3.3"
+  resolved "https://registry.yarnpkg.com/sift/-/sift-8.3.3.tgz#b2a38ce5577f3b62394b154049d358719fd9907b"
+  integrity sha512-VI37Nu7o3HJBEk9JqqoLmsJeRRnFhvma+pQe4BWsO/xrp9AtKB43Dow5Nx6OKcnjud2OwTLMMYw1fcYe7QHVNw==
 
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"
