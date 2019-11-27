@@ -51,7 +51,7 @@
   "dependencies": {
     "@feathersjs/commons": "^3.0.1",
     "@feathersjs/errors": "^3.3.4",
-    "@feathersjs/feathers": "^3.2.3",
+    "@feathersjs/feathers": "^4.4.0",
     "@types/uuid": "^3.4.4",
     "assert": "^1.4.1",
     "containerized": "^1.0.2",
