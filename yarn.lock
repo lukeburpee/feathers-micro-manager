@@ -95,11 +95,18 @@
     config "^2.0.0"
     debug "^4.0.0"
 
-"@feathersjs/errors@^3.2.0", "@feathersjs/errors@^3.3.4":
+"@feathersjs/errors@^3.2.0":
   version "3.3.4"
   resolved "https://registry.yarnpkg.com/@feathersjs/errors/-/errors-3.3.4.tgz#7dd591626ba57d1e8074464235b4d23906833ca7"
   dependencies:
     debug "^4.0.0"
+
+"@feathersjs/errors@^4.4.3":
+  version "4.4.3"
+  resolved "https://registry.yarnpkg.com/@feathersjs/errors/-/errors-4.4.3.tgz#9e24945649d0ebb6ea5ec8a729b381896381a3e3"
+  integrity sha512-EZHJ0zu3GyMlAviI94syL7TMmtjGx9npQMawv6N1c83dtBdum/pBePVuFFz0bJr3JpYJ60hHwYnFYv7K9+pH9w==
+  dependencies:
+    debug "^4.1.1"
 
 "@feathersjs/feathers@^3.1.7", "@feathersjs/feathers@^3.2.3":
   version "3.2.3"
@@ -597,6 +604,13 @@ debug@^3.1.0, debug@^3.2.5:
 debug@^4.0.0, debug@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.1.0.tgz#373687bffa678b38b1cd91f861b63850035ddc87"
+  dependencies:
+    ms "^2.1.1"
+
+debug@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.1.1.tgz#3b72260255109c6b589cee050f1d516139664791"
+  integrity sha512-pYAIzeRo8J6KPEaJ0VWOh5Pzkbw/RetuzehGM7QRRX5he4fPHx2rdKMB256ehJCkX+XRQm16eZLqLNS8RSZXZw==
   dependencies:
     ms "^2.1.1"
 
