@@ -1984,9 +1984,14 @@ typescript@^3.1.6:
   version "3.1.6"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.1.6.tgz#b6543a83cfc8c2befb3f4c8fba6896f5b0c9be68"
 
-uberproto@^2.0.1, uberproto@^2.0.2, uberproto@^2.0.4:
+uberproto@^2.0.1, uberproto@^2.0.2:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/uberproto/-/uberproto-2.0.4.tgz#f215bcc227c1b8fd8fccd8d701b9c96dd71ff85d"
+
+uberproto@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/uberproto/-/uberproto-2.0.5.tgz#63e4458e5ba685eac1df22232edcdfc74ed4a03f"
+  integrity sha512-TolTyrJGZSVM4tX9PibNN14hX/a3Q+qlP1TdQt4qmo+qOdjzWJ9gLwHuvV4xXlXmUtqR3mDbHZh7sbjuUGdMJQ==
 
 uglify-js@^3.1.4:
   version "3.4.9"
