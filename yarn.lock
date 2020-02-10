@@ -137,9 +137,10 @@
   version "0.0.31"
   resolved "https://registry.yarnpkg.com/@types/debug/-/debug-0.0.31.tgz#bac8d8aab6a823e91deb7f79083b2a35fa638f33"
 
-"@types/dockerode@^2.5.8":
-  version "2.5.8"
-  resolved "https://registry.yarnpkg.com/@types/dockerode/-/dockerode-2.5.8.tgz#4463f45391b57487eb86429c8a7f035c04748278"
+"@types/dockerode@^2.5.22":
+  version "2.5.22"
+  resolved "https://registry.yarnpkg.com/@types/dockerode/-/dockerode-2.5.22.tgz#356e90491bf532556d9fbe4863690a0dfb8ec127"
+  integrity sha512-YIHpziPXJ3Gowv5pnaWRv1zzTxaF32Jf9vy/h4OT9WH7xvnxX6kvM0utLzf8dI4Urx/f7SOHJnmPJqr2S7bbSw==
   dependencies:
     "@types/node" "*"
 
