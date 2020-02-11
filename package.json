@@ -65,7 +65,7 @@
   },
   "devDependencies": {
     "@feathersjs/configuration": "^2.0.4",
-    "@types/chai": "^4.1.7",
+    "@types/chai": "^4.2.9",
     "@types/debug": "^0.0.31",
     "@types/dockerode": "^2.5.8",
     "@types/feathersjs__configuration": "^1.0.1",
