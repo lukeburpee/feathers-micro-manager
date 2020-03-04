@@ -50,7 +50,7 @@
   "license": "ISC",
   "dependencies": {
     "@feathersjs/commons": "^3.0.1",
-    "@feathersjs/errors": "^3.3.4",
+    "@feathersjs/errors": "^4.5.2",
     "@feathersjs/feathers": "^3.2.3",
     "@types/uuid": "^3.4.4",
     "assert": "^1.4.1",
