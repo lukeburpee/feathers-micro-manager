@@ -64,7 +64,7 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
-    "@feathersjs/configuration": "^2.0.4",
+    "@feathersjs/configuration": "^4.5.3",
     "@types/chai": "^4.1.7",
     "@types/debug": "^0.0.31",
     "@types/dockerode": "^2.5.8",
