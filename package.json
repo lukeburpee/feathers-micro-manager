@@ -76,7 +76,7 @@
     "@types/mongoose": "^5.3.1",
     "@types/node": "^10.12.5",
     "chai": "^4.2.0",
-    "coveralls": "^3.0.2",
+    "coveralls": "^3.0.14",
     "cross-env": "^5.2.0",
     "dockerode": "^2.5.7",
     "feathers-service-tests": "^0.10.2",
